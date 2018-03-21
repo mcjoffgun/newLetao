@@ -1,0 +1,16 @@
+@charset "UTF-8";
+.sort {
+    background-color: #eee;
+    height: 30px;
+    line-height: 30px;
+    font-size: 12px;
+}
+.sort a {
+    float: left;
+    width: 25%;
+    color: #666;
+    text-align: center;
+}
+.sort a.now {
+    color: darkorange;
+}

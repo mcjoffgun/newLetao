@@ -1,0 +1,8 @@
+@charset "UTF-8";
+.nav {
+    padding: 5px;
+}
+.nav li {
+    float: left;
+    width: 33.33%;
+}

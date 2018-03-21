@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>Title</title>
+    <link rel="icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../lib/mui/css/mui.min.css">
+    <link rel="stylesheet" href="../lib/fa/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../css/common.css">
+    <link rel="stylesheet" href="../css/cate.css">
+</head>
+<body>
+<div class="container">
+    <div class="header">
+        <a href="javascript:history.go(-1)" class="mui-icon mui-icon-back"></a>
+        <h4>乐淘商城</h4>
+        <a href="#" class="fa fa-search"></a>
+    </div>
+    <div class="main">
+        <div class="cate_l">
+            <div class="mui-scroll-wrapper">
+                <ul class="one mui-scroll">
+                    <!--挖个坑-->
+                </ul>
+            </div>
+        </div>
+        <div class="cate_r">
+            <div class="mui-scroll-wrapper">
+                <ul class="mui-scroll">
+                    <!--挖个坑-->
+                </ul>
+            </div>
+        </div>
+
+    </div>
+    <div class="footer">
+        <ul>
+            <li>
+                <a href="index.html">
+                    <span class="fa fa-home"></span>
+                    <p>首页</p>
+                </a>
+            </li>
+            <li>
+                <a href="category.html" class="now">
+                    <span class="fa fa-bars"></span>
+                    <p  class="now">分类</p>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <span class="fa fa-shopping-cart"></span>
+                    <p>购物车</p>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <span class="fa fa-user"></span>
+                    <p>会员中心</p>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>
+</body>
+</html>
+<!-- 一级分类模板 -->
+<script type="text/html" id="tpl">
+    {{ each rows v i }}
+        <li data-id="{{ v.id }}" class="{{ i==0?'now':'' }}">{{ v.categoryName }}</li>
+    {{ /each }}
+</script>
+<!-- 二级分类模板 -->
+<script type="text/html" id="tpl1">
+    {{ if rows.length == 0 }}
+    <div>该分类下没有更多的品牌信息</div>
+    {{ /if }}
+    {{ each rows v i }}
+        <li>
+            <img src="{{ v.brandLogo }}" alt="">
+            <p>{{ v.brandName }}</p>
+        </li>
+    {{ /each }}
+</script>
+<script src="../lib/zepto/zepto.min.js"></script>
+<script src="../lib/mui/js/mui.min.js"></script>
+<script src="../lib/artTemplate/template-web.js"></script>
+<script src="../js/common.js"></script>
+<script src="../js/cate.js"></script>

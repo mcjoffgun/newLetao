@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <title>Title</title>
+  <link rel="icon" href="../favicon.ico">
+  <link rel="stylesheet" href="../lib/mui/css/mui.min.css">
+  <link rel="stylesheet" href="../lib/fa/css/font-awesome.min.css">
+  <link rel="stylesheet" href="../css/common.css">
+  <link rel="stylesheet" href="../css/product.css">
+</head>
+<body>
+<div class="container">
+  <div class="header">
+    <a href="javascript:history.go(-1)" class="mui-icon mui-icon-arrowleft"></a>
+    <h4>商品详情</h4>
+    <a href="javascript:location.reload;" class="mui-icon mui-icon-reload"></a>
+  </div>
+  <div class="main">
+    <!--滚动容器的父盒子-->
+    <div class="mui-scroll-wrapper">
+      <!--子盒子-->
+      <div class="mui-scroll">
+
+      </div>
+    </div>
+  </div>
+  <div class="cart">
+    <a href="cart.html" class="goCart">去购物车</a>
+    <div class="btnCart">
+
+    </div>
+  </div>
+</div>
+</body>
+</html>
+<script type="text/html" id="tpl">
+  <!-- 图片 -->
+  <div class="slider">
+    <div class="mui-slider">
+      <div class="mui-slider-group mui-slider-loop">
+
+        <div class="mui-slider-item mui-slider-item-duplicate"><a href="#"><img src="{{pic[pic.length-1].picAddr}}" /></a></div>
+        {{ each pic v i }}
+        <div class="mui-slider-item"><a href="#"><img src="{{ v.picAddr }}" /></a></div>
+        {{ /each }}
+        <!--支持循环，需要重复图片节点-->
+        <div class="mui-slider-item mui-slider-item-duplicate"><a href="#"><img src="{{pic[0].picAddr}}" /></a></div>
+      </div>
+      <div class="mui-slider-indicator">
+        {{ each pic v i }}
+        <div class="mui-indicator {{ i==0?'mui-active':'' }}"></div>
+        {{ /each }}
+      </div>
+    </div>
+  </div>
+  <!-- 名称 -->
+  <div class="name padding">
+    {{ proName }}
+  </div>
+  <!-- 价格 -->
+  <div class="padding">
+    价格：<span class="price">&yen;{{ price }}</span>
+    <span class="oldPrice">&yen;{{ oldPrice }}</span>
+  </div>
+  <!-- 尺码 -->
+  <div class="size padding">
+    尺码：
+    <%
+    var temp = size.split('-');
+    for(var i = temp[0];i <= temp[1]; i++){
+    %>
+    <span>{{ i }}</span>
+    <% } %>
+  </div>
+  <!-- 数量 -->
+  <div class="num padding">
+    数量：
+    <div class="mui-numbox" data-numbox-step='1' data-numbox-min='1' data-numbox-max='{{ num }}'>
+      <button class="mui-btn mui-numbox-btn-minus" type="button">-</button>
+      <input class="mui-numbox-input" type="number" value="1" />
+      <button class="mui-btn mui-numbox-btn-plus" type="button">+</button>
+    </div>
+    <span>剩余数量：{{ num }}双</span>
+  </div>
+  <!-- 描述 -->
+  <div class="desc padding">
+    描述：{{ proDesc }}
+  </div>
+
+</script>
+<script src="../lib/mui/js/mui.min.js"></script>
+<script src="../lib/zepto/zepto.min.js"></script>
+<script src="../lib/artTemplate/template-web.js"></script>
+<script src="../js/common.js"></script>
+<script src="../js/product.js"></script>

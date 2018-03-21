@@ -1,0 +1,41 @@
+.cate_l {
+    width: 90px;
+    height: 100%;
+    float: left;
+    position: relative;
+    overflow: hidden;
+    /*background-color: pink;*/
+}
+.cate_l li {
+    width: 90px;
+    height: 50px;
+    background-color: pink;
+    border-right: 1px solid red;
+    border-bottom: 1px solid red;
+    color: #007aff;
+    text-align: center;
+    line-height: 48px;
+}
+
+.cate_l li.now {
+    background-color: #fff;
+    border-right: 1px solid transparent;
+}
+.cate_r {
+    height: 100%;
+    /*margin-left: 90px;*/
+    overflow: hidden;
+    position: relative;
+    /*background-color: lightskyblue;*/
+}
+.cate_r li {
+    float: left;
+    width: 33.33%;
+    text-align: center;
+}
+.cate_r li img {
+    width: 62px;
+    height: 62px;
+    margin: 0 auto;
+}
+
