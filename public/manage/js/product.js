@@ -1,18 +1,12 @@
-/**
- * Created by HUCC on 2017/11/24.
- */
 $(function () {
-
-
   //分页渲染的功能
   var currentPage = 1;
   var pageSize = 2;
-  var imgs = [];//每次图片上传成功就往数组存储下来上传的结果。
+  var imgs = []; //每次图片上传成功就往数组存储下来上传的结果。
   // 1. 判断数组的长度就知道上传了几张图片
   //2. 点击添加按钮时，需要获取到图片的信息
 
   function render() {
-
     //发送ajax请求，获取商品数据
     $.ajax({
       type: "get",
@@ -23,9 +17,7 @@ $(function () {
       },
       success: function (info) {
         //console.log(info);
-
         $("tbody").html(template("tpl", info));
-
         //分页渲染
         $("#paginator").bootstrapPaginator({
           bootstrapMajorVersion: 3,
@@ -48,7 +40,7 @@ $(function () {
                 return "下一页";
               case "last":
                 return "尾页";
-              //如果是page，说明就是数字，只需要返回对应的数字即可
+                //如果是page，说明就是数字，只需要返回对应的数字即可
               default:
                 return page;
             }
@@ -63,7 +55,7 @@ $(function () {
                 return "下一页";
               case "last":
                 return "尾页";
-              //如果是page，说明就是数字，只需要返回对应的数字即可
+                //如果是page，说明就是数字，只需要返回对应的数字即可
               default:
                 return "跳转到" + page;
             }
@@ -75,15 +67,10 @@ $(function () {
           }
 
         });
-
       }
     });
-
   }
-
   render();
-
-
   //显示模态框
   $(".btn_add").on("click", function () {
     $("#addModal").modal("show");
@@ -138,70 +125,70 @@ $(function () {
     fields: {
 
       brandId: {
-        validators:{
-          notEmpty:{
-            message:"请选择二级分类"
+        validators: {
+          notEmpty: {
+            message: "请选择二级分类"
           }
         }
       },
       proName: {
-        validators:{
-          notEmpty:{
-            message:"请输入商品的名称"
+        validators: {
+          notEmpty: {
+            message: "请输入商品的名称"
           }
         }
       },
       proDesc: {
-        validators:{
-          notEmpty:{
-            message:"请输入商品的描述"
+        validators: {
+          notEmpty: {
+            message: "请输入商品的描述"
           }
         }
       },
       num: {
-        validators:{
-          notEmpty:{
-            message:"请输入商品的库存"
+        validators: {
+          notEmpty: {
+            message: "请输入商品的库存"
           },
           //正则校验
           regexp: {
             //不能是0开头，必须是数字
-            regexp:/^[1-9]\d*$/,
-            message:"请输入合法的库存"
+            regexp: /^[1-9]\d*$/,
+            message: "请输入合法的库存"
           }
         }
       },
       size: {
-        validators:{
-          notEmpty:{
-            message:"请输入商品的尺码"
+        validators: {
+          notEmpty: {
+            message: "请输入商品的尺码"
           },
           //正则校验
           regexp: {
             //不能是0开头，必须是数字
-            regexp:/^\d{2}-\d{2}$/,
-            message:"请输入合法的尺码,例如(32-46)"
+            regexp: /^\d{2}-\d{2}$/,
+            message: "请输入合法的尺码,例如(32-46)"
           }
         }
       },
       oldPrice: {
-        validators:{
-          notEmpty:{
-            message:"请输入商品的原价"
+        validators: {
+          notEmpty: {
+            message: "请输入商品的原价"
           }
         }
       },
       price: {
-        validators:{
-          notEmpty:{
-            message:"请输入商品的价格"
+        validators: {
+          notEmpty: {
+            message: "请输入商品的价格"
           }
         }
       },
-      brandLogo:{
-        validators:{
-          notEmpty:{
-            message:"请上传3张图片"
+      brandLogo: {
+        validators: {
+          notEmpty: {
+            message: "请上传3张图片"
           }
         }
       }
@@ -212,25 +199,25 @@ $(function () {
 
   //图片上传
   $("#fileupload").fileupload({
-    dataType:"json",
-    done:function (e, data) {
+    dataType: "json",
+    done: function (e, data) {
 
-      if(imgs.length >= 3){
+      if (imgs.length >= 3) {
         return false;
       }
 
       //console.log(data.result);
       //上传图片成功了
       //1. 把图片显示到页面中
-      $(".img_box").append('<img src="'+data.result.picAddr+'" width="100" height="100" alt="">');
+      $(".img_box").append('<img src="' + data.result.picAddr + '" width="100" height="100" alt="">');
 
       //2. 把结果存储起来，添加的时候需要使用
       imgs.push(data.result);
 
       //3. 判断数组的长度，如果是3，手动让brandLogo 校验成功即可，  如果不是3，校验失败
-      if(imgs.length === 3){
+      if (imgs.length === 3) {
         $form.data("bootstrapValidator").updateStatus("brandLogo", "VALID");
-      }else {
+      } else {
         $form.data("bootstrapValidator").updateStatus("brandLogo", "INVALID");
       }
     }
@@ -247,17 +234,17 @@ $(function () {
     //发送ajax请求
     var param = $form.serialize();
 
-    param += "&picName1="+imgs[0].picName + "&picAddr1=" + imgs[0].picAddr;
-    param += "&picName2="+imgs[1].picName + "&picAddr2=" + imgs[1].picAddr;
-    param += "&picName3="+imgs[2].picName + "&picAddr3=" + imgs[2].picAddr;
+    param += "&picName1=" + imgs[0].picName + "&picAddr1=" + imgs[0].picAddr;
+    param += "&picName2=" + imgs[1].picName + "&picAddr2=" + imgs[1].picAddr;
+    param += "&picName3=" + imgs[2].picName + "&picAddr3=" + imgs[2].picAddr;
 
 
     $.ajax({
-      type:"post",
-      url:"/product/addProduct",
-      data:param,
-      success:function (info){
-        if(info.success){
+      type: "post",
+      url: "/product/addProduct",
+      data: param,
+      success: function (info) {
+        if (info.success) {
 
           //1. 关闭模态框
           $("#addModal").modal("hide");

@@ -1,9 +1,4 @@
-/**
- * Created by HUCC on 2017/11/22.
- */
-
 $(function () {
-
   //去后台获取一级分类的数据
   var currentPage = 1;
   var pageSize = 5;
