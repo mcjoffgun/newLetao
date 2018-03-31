@@ -15,14 +15,15 @@
   line-height: 50px;
   text-align: center;
   font-size: 16px;
-  background-color: pink;
-  border-right: 1px solid red;
-  border-bottom: 1px solid red;
+  /* background-color: #0084ff; */
+  border-right: 1px solid #007aff;
+  border-bottom: 1px solid #007aff;
 }
 
 .lt_category_l li.now a {
   border-right: none;
   background-color: #fff;
+  color: #ff8500
 }
 
 
