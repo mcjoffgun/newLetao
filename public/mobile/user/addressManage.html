@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0" />
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="black" name="apple-mobile-web-app-status-bar-style">
+    <meta content="telephone=no" name="format-detection">
+    <title>收货地址管理</title>
+    <link type="image/x-icon" rel="shortcut icon" href="../images/favicon.ico">
+    <link rel="stylesheet" href="../res/mui/css/mui.min.css" />
+    <link rel="stylesheet" href="../res/mui/css/mui.picker.css" />
+    <link rel="stylesheet" href="../res/mui/css/mui.poppicker.css" />
+    <link rel="stylesheet" href="../res/fontAwesome/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="../css/common.css" />
+    <link rel="stylesheet" href="../css/user.css" />
+</head>
+
+<body>
+    <div class="lt_container">
+        <div class="lt_header">
+            <!--javascript: 伪协议，  href本来是要跳转，javascript:页面不跳转，变成执行js代码-->
+            <a class="icon_left" href="javascript:history.go(-1);">
+                <span class="mui-icon mui-icon-back"></span>
+            </a>
+            <h4>收货地址管理</h4>
+            <a class="icon_right" href="search.html">
+                <span class="fa fa-search"></span>
+            </a>
+        </div>
+
+        <div class="lt_main">
+            <div class="cz_layout bgg">
+                <header class="cz_topBar">
+                    <!-- <a href="javascript:history.back();" class="icon_back fa fa-arrow-left"></a> -->
+                    <!-- <span class="title"></span> -->
+                </header>
+                <div class="cz_container">
+                    <div class="form_box">
+                        <div class="mui-input-row">
+                            <input name="recipients" type="text" placeholder="收货人">
+                        </div>
+                        <div class="mui-input-row">
+                            <input name="postCode" type="text" placeholder="邮编">
+                        </div>
+                        <div class="mui-input-row">
+                            <input name="address" type="text" readonly placeholder="省市区">
+                        </div>
+                        <div class="mui-input-row">
+                            <textarea name="addressDetail" id="textarea" rows="5" placeholder="详细地址"></textarea>
+                        </div>
+                        <a href="javascript:;" class="mui-btn mui-btn-primary btn_submit">确认</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="lt_footer">
+            <ul class="mui-clearfix">
+                <li>
+                    <a href="../index.html">
+                        <span class="fa fa-home"></span>
+                        <p>首页</p>
+                    </a>
+                </li>
+                <li >
+                    <a href="../category.html">
+                        <span class="fa fa-bars"></span>
+                        <p>分类</p>
+                    </a>
+                </li>
+                <li >
+                    <a href="../cart.html">
+                        <span class="fa fa-shopping-cart"></span>
+                        <p>购物车</p>
+                    </a>
+                </li>
+                <li class="now">
+                    <a href="../user.html">
+                        <span class="fa fa-user"></span>
+                        <p>会员中心</p>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <script src="../res/mui/js/mui.min.js"></script>
+    <script src="../res/zepto/zepto.min.js"></script>
+    <script src="../res/artTemplate/template-native.js"></script>
+    <script src="../js/common.js"></script>
+    <script src="../js/user/addressManage.js"></script>
+    <script src="../res/mui/js/mui.picker.js"></script>
+    <script src="../res/mui/js/mui.poppicker.js"></script>
+    <script src="../js/user/city.js"></script>
+</body>
+
+</html>

@@ -1,29 +1,24 @@
+/**
+ * ITCAST WEB
+ * Created by zhousg on 2017/1/2.
+ */
 $(function(){
-    /*1.显示用户信息*/
-    var render = function(){
-        getUserData(function(data){
-            $('.mui-media-body').html(data.username+'<p class="mui-ellipsis">绑定手机:'+data.mobile+'</p>');
-        });
-    }
-    render();
-    /*2.退出操作*/
-    $('.mui-block').on('click',function(){
-        $.ajax({
-            type:'get',
-            url:'/user/logout',
-            data:'',
-            dataType:'json',
-            success:function(data){
-                if(data.success){
-                    location.href = '/m/user/login.html';
-                }
+
+    getUserIndexData(function(data){
+        var mobile = data.mobile||'暂无';
+        $('.mui-media-body').html(data.username+'<p class="mui-ellipsis">绑定手机:'+data.mobile+'</p>');
+    });
+
+    $('body').on('tap','.btn_outLogin',function(){
+        getLoginOutData(function(data){
+            if(data.success){
+                location.href = LeTao.LOGIN_URL;
             }
         });
     });
 });
-/*获取用户信息*/
-var getUserData = function(callback){
-    lt.ajaxFilter({
+var getUserIndexData = function(callback){
+    LeTao.ajax({
         type:'get',
         url:'/user/queryUserMessage',
         data:'',
@@ -32,4 +27,18 @@ var getUserData = function(callback){
             callback && callback(data);
         }
     });
-}
+};
+var getLoginOutData = function(callback){
+    LeTao.ajax({
+        type:'get',
+        url:'/user/logout',
+        data:'',
+        dataType:'json',
+        beforeSend:function(){
+            $('.btn_login').html('正在退出...');
+        },
+        success:function(data){
+            callback && callback(data);
+        }
+    });
+};

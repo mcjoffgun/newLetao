@@ -91,6 +91,7 @@ $(function(){
     $('.mui-table-view').on('change','input',function(){
         /*设置 计算  价格*/
         setAmount();
+      
     });
 });
 var getCartData = function(callback){

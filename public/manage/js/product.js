@@ -1,7 +1,7 @@
 $(function () {
   //分页渲染的功能
   var currentPage = 1;
-  var pageSize = 2;
+  var pageSize = 5;
   var imgs = []; //每次图片上传成功就往数组存储下来上传的结果。
   // 1. 判断数组的长度就知道上传了几张图片
   //2. 点击添加按钮时，需要获取到图片的信息

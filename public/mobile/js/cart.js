@@ -137,7 +137,9 @@ $(function () {
 
 
     $(".lt_total .total").text(total.toFixed(2));
-
+    $(".generateOrders").click(function(){
+      location.href = "../../mobile/user/address.html"
+  })
   });
 
 
